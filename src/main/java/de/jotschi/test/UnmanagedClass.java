@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 public class UnmanagedClass {
 
 	@Autowired
-	private MessagerService service;
+	private MessagerService messagerService;
 
 	public UnmanagedClass() {
 		// TODO Auto-generated constructor stub
@@ -18,7 +18,12 @@ public class UnmanagedClass {
 	public void test() {
 		System.out.println("test called");
 		assertNotNull("The service within the " + getClass().getSimpleName()
-				+ " class should not be null since the class was annotated with @Configurable and the field was autowired.", service);
-		service.sayHello();
+				+ " class should not be null since the class was annotated with @Configurable and the field was autowired.", messagerService);
+		messagerService.sayHello();
 	}
+
+	public void setService(MessagerService messagerService) {
+		this.messagerService = messagerService;
+	}
+
 }
